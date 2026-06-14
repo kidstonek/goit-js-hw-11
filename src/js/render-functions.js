@@ -4,7 +4,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const galleryEl = document.querySelector('.gallery');
 const loaderEl = document.querySelector('.loader');
 
-export const gallery = new SimpleLightbox('.gallery a', {
+const gallery = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionSelector: 'img',
     captionDelay: 250,
@@ -12,6 +12,7 @@ export const gallery = new SimpleLightbox('.gallery a', {
 
 export function createGallery(images) {
     galleryEl.innerHTML = images.map(image).join('');
+    gallery.refresh();
 }
 
 export function clearGallery() {

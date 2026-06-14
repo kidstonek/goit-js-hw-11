@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 
 import { getImagesByQuery } from "./js/pixabay-api";
-import { createGallery, showLoader, hideLoader, gallery, clearGallery } from "./js/render-functions";
+import { createGallery, showLoader, hideLoader, clearGallery } from "./js/render-functions";
 
 
 const refs = {
@@ -32,11 +32,11 @@ refs.usrForm.addEventListener('submit', (e) => {
         
         createGallery(some)
         refs.usrSearch.value = '';
-        gallery.refresh()
+
     }).catch(err => {
         hideLoader()
         refs.usrSearch.value = '';
-    iziToast.error({ message: 'Something went wrong!', position: 'topRight' });
+        iziToast.error({ message: 'Something went wrong!', position: 'topRight' });
     })
     
 })
