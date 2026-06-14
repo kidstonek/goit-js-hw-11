@@ -8,12 +8,13 @@ import { createGallery, showLoader, hideLoader, gallery, clearGallery } from "./
 
 const refs = {
     usrSearch: document.querySelector('input'),
-    usrAction: document.querySelector('[type=submit]'),
+    usrForm: document.querySelector('form'),
 }
 
 
-refs.usrAction.addEventListener('click', (e) => {
+refs.usrForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!refs.usrSearch.value.trim()) return;
     clearGallery()
     showLoader()
 
@@ -33,12 +34,10 @@ refs.usrAction.addEventListener('click', (e) => {
         refs.usrSearch.value = '';
         gallery.refresh()
     }).catch(err => {
-            hideLoader()
+        hideLoader()
+        refs.usrSearch.value = '';
     iziToast.error({ message: 'Something went wrong!', position: 'topRight' });
     })
     
 })
-
-
-
 
