@@ -10,7 +10,8 @@ import { createGallery } from "./js/render-functions";
 const refs = {
     usrSearch: document.querySelector('input'),
     usrAction: document.querySelector('[type=submit]'),
-    usrGallery: document.querySelector('.gallery')
+    usrGallery: document.querySelector('.gallery'),
+    loader: document.querySelector('.loader'),
 }
 
 const gallery = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionSelector: 'img',
@@ -19,7 +20,10 @@ const gallery = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionSe
 
 refs.usrAction.addEventListener('click', (e) => {
     e.preventDefault();
+    refs.loader.classList.add('visible');
+
     getImagesByQuery(refs.usrSearch.value).then(some => {
+        refs.loader.classList.remove('visible');
         if (some.length === 0) {
             iziToast.error({
                message: 'Sorry, there are no images matching your search query. Please try again!',
@@ -33,6 +37,9 @@ refs.usrAction.addEventListener('click', (e) => {
         refs.usrGallery.innerHTML = myGal
         refs.usrSearch.value = '';
         gallery.refresh()
+    }).catch(err => {
+            refs.loader.classList.remove('visible');
+    iziToast.error({ message: 'Something went wrong!', position: 'topRight' });
     })
     
 })

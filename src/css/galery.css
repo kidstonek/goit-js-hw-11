@@ -21,6 +21,8 @@
 
 
 .loader {
+    width: 48px;
+    height: 48px;
     border: 24px solid;
     border-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.5);
     border-radius: 50%;
@@ -45,4 +47,12 @@
     100% {
         border-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.75) rgba(255, 255, 255, 0.15);
     }
+}
+
+.loader {
+    display: none;
+}
+
+.loader.visible {
+    display: block;
 }
