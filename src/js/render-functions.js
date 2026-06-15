@@ -32,8 +32,8 @@ function image(img) {
           <li class="gallery-item">
             <a class="gallery-link" href="${img.largeImageURL}">
               <img
-                src=${img.previewURL}
-                alt=${img.tags.replace(",", "")}
+                src="${img.webformatURL}"
+                alt="${img.tags}"
                 width="360"
                 height="200"
                 data-source="${img.largeImageURL}"
@@ -58,5 +58,3 @@ function image(img) {
           </li>
 `
 }
-
-
